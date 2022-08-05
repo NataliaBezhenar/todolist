@@ -7,22 +7,25 @@ import styles from "./TodoList.module.css";
 
 const TodoList = ({ todos, onDeleteTodo, onToggleCompleted }) => (
   <ul className={styles.TodoList}>
-    {todos.map(({ id, text, completed }) => (
-      <li
-        key={id}
-        className={`${styles.TodoList__item}`}
-        // className={classNames("TodoList__item", {
-        //   "TodoList__item--completed": completed,
-        // })}
-      >
-        <Todo
-          text={text}
-          completed={completed}
-          onToggleCompleted={() => onToggleCompleted(id)}
-          onDelete={() => onDeleteTodo(id)}
-        />
-      </li>
-    ))}
+    {todos.map(({ id, text, completed }) => {
+      let style = "";
+      if (completed) {
+        style = "--completed";
+      }
+      return (
+        <li
+          key={id}
+          className={`${styles.TodoList__item} ${styles.TodoList__item}${style}`}
+        >
+          <Todo
+            text={text}
+            completed={completed}
+            onToggleCompleted={() => onToggleCompleted(id)}
+            onDelete={() => onDeleteTodo(id)}
+          />
+        </li>
+      );
+    })}
   </ul>
 );
 
@@ -40,7 +43,7 @@ const mapStateToProps = ({ todos: { items, filter } }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onDeleteTodo: (id) => dispatch(todosActions.deleteTodo(id)),
-  onToggleCompleted: () => null,
+  onToggleCompleted: (id) => dispatch(todosActions.toggleCompleted(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

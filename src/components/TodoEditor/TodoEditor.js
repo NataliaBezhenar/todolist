@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import todosActions from "../../redux/todos/todos-actions";
 import styles from "./TodoEditor.module.css";
 
-const TodoEditor = ({ onSubmit }) => {
+const TodoEditor = ({ onSubmit, onSave }) => {
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
@@ -14,6 +14,7 @@ const TodoEditor = ({ onSubmit }) => {
     e.preventDefault();
 
     onSubmit(message);
+    onSave();
 
     setMessage("");
   };

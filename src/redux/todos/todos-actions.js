@@ -7,8 +7,13 @@ const addTodo = createAction("todos/add", (text) => {
 });
 
 const deleteTodo = createAction("todos/delete");
-const changeFilter = createAction("todos/changeFilter");
 const toggleCompleted = createAction("todos/toggleCompleted");
+const changeFilter = createAction("todos/changeFilter");
 
-const todoActions = { addTodo, deleteTodo, changeFilter, toggleCompleted };
+const todoActions = {
+  addTodo,
+  deleteTodo,
+  changeFilter,
+  toggleCompleted,
+};
 export default todoActions;

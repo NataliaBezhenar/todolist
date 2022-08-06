@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-//import classNames from "classnames";
 import Todo from "../Todo";
 import todosActions from "../../redux/todos/todos-actions";
 import styles from "./TodoList.module.css";

@@ -12,11 +12,14 @@ const TodoEditor = ({ onSubmit, onSave }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    onSubmit(message);
-    onSave();
-
-    setMessage("");
+    if (message !== "") {
+      onSubmit(message);
+      onSave();
+      setMessage("");
+      return;
+    } else {
+      alert("Todo cannot be empty");
+    }
   };
 
   return (

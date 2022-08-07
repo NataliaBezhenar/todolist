@@ -1,21 +1,20 @@
 import { useState } from "react";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 import userActions from "../../redux/user/user-actions";
 
-const InputName = (props) => {
-  console.log(props);
+const InputName = ({ onSubmit }) => {
   const [name, setName] = useState("");
+  const history = useHistory();
 
   const handleChange = (e) => {
-    console.log(e.target.value);
     setName(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submitted", name);
-    props.onSubmit(name);
-    setName("");
+    onSubmit(name);
+    history.push("/todos");
   };
 
   return (

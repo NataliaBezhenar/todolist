@@ -7,6 +7,7 @@ import IconButton from "../components/IconButton";
 import { ReactComponent as AddIcon } from "../icons/add.svg";
 import useModal from "../components/Modal/useModal";
 import Stats from "../components/Stats";
+import Header from "../components/Header/Header";
 
 const barStyles = {
   display: "flex",
@@ -20,6 +21,7 @@ const TodosView = () => {
   return (
     <Container>
       <div style={barStyles}>
+        <Header />
         <Stats />
         <IconButton onClick={toggle} aria-label="Add todo">
           <AddIcon width="40" height="40" fill="#fff" />

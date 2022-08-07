@@ -1,6 +1,13 @@
-import types from "./user-types";
+import { createAction } from "@reduxjs/toolkit";
 
-const login = (name) => ({ type: types.LOGIN, payload: name });
+const login = createAction("user/login", (name) => {
+  return {
+    payload: {
+      name,
+      isLoggedIn: true,
+    },
+  };
+});
 
 const actions = { login };
 

@@ -13,6 +13,10 @@ const InputName = ({ onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (name.trim().length === 0) {
+      alert("Please enter your name");
+      return;
+    }
     onSubmit(name);
     history.push("/todos");
   };

@@ -1,17 +1,8 @@
 import { combineReducers } from "redux";
-import types from "./user-types";
+import { createReducer } from "@reduxjs/toolkit";
 
-const username = (state = "", action) => {
-  switch (action.type) {
-    case types.LOGIN:
-      return action.payload;
-    default:
-      return state;
-  }
-};
+const username = createReducer("", {
+  "user/login": (state, action) => action.payload,
+});
 
-const isLoggedIn = (state = false, action) => {
-  return state;
-};
-
-export default combineReducers({ username, isLoggedIn });
+export default combineReducers({ username });

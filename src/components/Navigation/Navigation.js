@@ -1,39 +1,26 @@
-import { Route, NavLink, Switch } from "react-router-dom";
+import { Route, NavLink, Switch, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import HomeView from "../../views/HomeView";
 import TodosView from "../../views/TodosView";
 import NotFoundView from "../../views/NotFoundView";
 import styles from "./Navigation.module.css";
 
-const Navigation = () => (
-  <>
-    <ul>
-      <li>
-        <NavLink
-          exact
-          className={styles.NavLink}
-          activeClassName={styles.NavLink__active}
-          to="/"
-        >
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          className={styles.NavLink}
-          activeClassName={styles.NavLink__active}
-          to="/todos"
-        >
-          Todos
-        </NavLink>
-      </li>
-    </ul>
+const isOk = true;
 
+const Navigation = ({ isLoggedIn }) => (
+  <>
     <Switch>
       <Route exact path="/" component={HomeView} />
-      <Route path="/todos" component={TodosView} />
+      <Route exact path="/todos">
+        {!isLoggedIn ? <Redirect to="/" /> : <TodosView />}
+      </Route>
       <Route component={NotFoundView} />
     </Switch>
   </>
 );
 
-export default Navigation;
+const mapStateToProps = (state) => ({
+  isLoggedIn: state.user.username.isLoggedIn,
+});
+
+export default connect(mapStateToProps, null)(Navigation);

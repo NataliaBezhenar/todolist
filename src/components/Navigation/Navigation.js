@@ -1,11 +1,9 @@
-import { Route, NavLink, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import HomeView from "../../views/HomeView";
 import TodosView from "../../views/TodosView";
 import NotFoundView from "../../views/NotFoundView";
 import styles from "./Navigation.module.css";
-
-const isOk = true;
 
 const Navigation = ({ isLoggedIn }) => (
   <>

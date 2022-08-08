@@ -2,6 +2,7 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import userActions from "../../redux/user/user-actions";
+import styles from "./InputName.module.css";
 
 const InputName = ({ onSubmit }) => {
   const [name, setName] = useState("");
@@ -22,9 +23,14 @@ const InputName = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" value={name} onChange={handleChange} />
-      <button type="submit">Save</button>
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <div className={styles["input-field"]}>
+        <label htmlFor="user">Please enter your name</label>
+        <input id="user" type="text" value={name} onChange={handleChange} />
+      </div>
+      <button className={styles.btn} type="submit">
+        Go to your Todos
+      </button>
     </form>
   );
 };

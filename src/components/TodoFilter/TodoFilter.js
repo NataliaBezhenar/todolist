@@ -1,18 +1,15 @@
 import React from "react";
-import styles from "./TodoFilter.module.css";
+
 import { connect } from "react-redux";
 import todosActions from "../../redux/todos/todos-actions";
+import { SelectButton } from "../Button/Button";
 
 const TodoFilter = ({ value, onChange }) => (
-  <div className={styles.TodoFilter}>
-    <p className={styles.TodoFilter__label}>Find todo</p>
-    <input
-      type="text"
-      className={styles.TodoFilter__input}
-      value={value}
-      onChange={onChange}
-    />
-  </div>
+  <SelectButton onChange={onChange} value={value}>
+    <option value="all">All</option>
+    <option value="incomplete">Incomplete</option>
+    <option value="complete">Completed</option>
+  </SelectButton>
 );
 
 const mapStateToProps = (state) => ({

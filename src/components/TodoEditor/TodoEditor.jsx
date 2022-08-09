@@ -12,7 +12,7 @@ const TodoEditor = ({ onSubmit, onSave }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (message !== "") {
+    if (message.trim() !== "") {
       onSubmit(message);
       onSave();
       setMessage("");

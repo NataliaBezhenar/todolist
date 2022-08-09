@@ -18,13 +18,11 @@ const Todo = ({
     inputRef.current.focus();
   };
 
-  const update = (message, e) => {
-    if (e.code === "Enter") {
-      if (message !== "") {
-        onEditTodo({ id, message });
-      } else console.log("empty message");
-      inputRef.current.disabled = true;
+  const update = (message) => {
+    if (message.trim() !== "") {
+      onEditTodo({ id, message });
     }
+    inputRef.current.disabled = true;
   };
 
   return (
@@ -41,7 +39,7 @@ const Todo = ({
           ref={inputRef}
           disabled={inputRef}
           defaultValue={text}
-          onKeyPress={(e) => update(inputRef.current.value, e)}
+          onBlur={() => update(inputRef.current.value)}
         />
       </div>
       <div className={styles["todo-btns-group"]}>

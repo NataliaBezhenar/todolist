@@ -12,21 +12,22 @@
   overflow: hidden;
 }
 .button__select {
-  color: #000;
+  color: #555;
   padding: 1rem;
   border: none;
-  background-color: #dedfe1;
+  background-color: #edfdfd;
 
   width: 150px;
   cursor: pointer;
 }
 
-.button--primary {
+.button__primary {
   background-color: #646ff0;
   color: #fff;
 }
 
-.button--secondary {
-  background-color: #f8f8ff;
-  color: #000;
+.button:hover,
+.button:focus {
+  background-color: #364fc7;
+  color: #fff;
 }

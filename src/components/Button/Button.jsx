@@ -5,7 +5,7 @@ function Button({ type, children, ...rest }) {
   return (
     <button
       type="submit"
-      className={`${styles.button} ${styles["button--primary"]}`}
+      className={`${styles.button} ${styles["button__primary"]}`}
       {...rest}
     >
       {children}

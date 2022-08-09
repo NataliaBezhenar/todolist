@@ -4,30 +4,33 @@ import Todo from "../Todo";
 import todosActions from "../../redux/todos/todos-actions";
 import styles from "./TodoList.module.css";
 
-const TodoList = ({ todos, onDeleteTodo, onToggleCompleted, onEditTodo }) => (
-  <ul className={styles.TodoList}>
-    {todos.map(({ id, text, completed }) => {
-      let style = "";
-      if (completed) {
-        style = "--completed";
-      }
-      return (
-        <li
-          key={id}
-          className={`${styles.TodoList__item} ${styles.TodoList__item}${style}`}
-        >
-          <Todo
-            text={text}
-            completed={completed}
-            onToggleCompleted={() => onToggleCompleted(id)}
-            onDelete={() => onDeleteTodo(id)}
-            onEdit={() => onEditTodo(id)}
-          />
-        </li>
-      );
-    })}
-  </ul>
-);
+const TodoList = ({ todos, onDeleteTodo, onToggleCompleted, onEditTodo }) => {
+  return (
+    <ul className={styles.TodoList}>
+      {todos.map(({ id, text, completed }) => {
+        let style = "";
+        if (completed) {
+          style = "--completed";
+        }
+        return (
+          <li
+            key={id}
+            className={`${styles.TodoList__item} ${styles.TodoList__item}${style}`}
+          >
+            <Todo
+              text={text}
+              completed={completed}
+              id={id}
+              onToggleCompleted={() => onToggleCompleted(id)}
+              onDelete={() => onDeleteTodo(id)}
+              onEdit={() => onEditTodo(id)}
+            />
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
 
 const getVisibleTodos = (allTodos, filter) => {
   switch (filter) {

@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./Modal.css";
 
-const Modal = ({ isShowing, hide, children }) =>
+const Modal = ({ isShowing, hide, children, type }) =>
   isShowing
     ? ReactDOM.createPortal(
         <React.Fragment>

@@ -4,18 +4,19 @@ import Todo from "../Todo";
 import todosActions from "../../redux/todos/todos-actions";
 import styles from "./TodoList.module.css";
 
-const TodoList = ({ todos, onDeleteTodo, onToggleCompleted, onEditTodo }) => {
+const TodoList = ({ todos, onDeleteTodo, onToggleCompleted }) => {
+  if (todos.length === 0) {
+    return <h2 className={styles["todoList__fallback"]}>No todos found</h2>;
+  }
   return (
     <ul className={styles.todoList}>
       {todos.map(({ id, text, completed }) => {
-        let style = "";
-        if (completed) {
-          style = "--completed";
-        }
         return (
           <li
             key={id}
-            className={`${styles.todoList__item} ${styles.todoList__item}${style}`}
+            className={`${styles.todoList__item} ${
+              completed && styles.completed
+            } }`}
           >
             <Todo
               text={text}
@@ -23,7 +24,6 @@ const TodoList = ({ todos, onDeleteTodo, onToggleCompleted, onEditTodo }) => {
               id={id}
               onToggleCompleted={() => onToggleCompleted(id)}
               onDelete={() => onDeleteTodo(id)}
-              onEdit={() => onEditTodo(id)}
             />
           </li>
         );
